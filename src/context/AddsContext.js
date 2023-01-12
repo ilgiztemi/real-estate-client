@@ -45,7 +45,7 @@ export const AddsProvider = ({ children }) => {
     fetch("/adds")
       .then((res) => res.json())
       .then((data) => { 
-        console.log("hereeee test", data);
+        console.log("here test", data);
         addAllAddsFn(data)});
   }, [state.adds]);
   const addAllAddsFn = (data) => {

@@ -40,7 +40,7 @@ const reducer = (state, action) => {
 export const AddsContext = createContext();
 export const AddsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const url = "https://3621-66-212-242-25.ngrok.io";
+  const url = "https://20e2-66-212-242-25.ngrok.io";
   //this hook is used to get all data from mongoDB database
   useEffect(() => {
     fetch(url + "/adds")

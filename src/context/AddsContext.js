@@ -49,7 +49,7 @@ export const AddsProvider = ({ children }) => {
       .then((data) => { 
         console.log("here test", data);
         addAllAddsFn(data)});
-  }, [state.update]);
+  }, []);
   const addAllAddsFn = (data) => {
     dispatch({
       type: "add-all-adds",

@@ -43,9 +43,7 @@ export const AddsProvider = ({ children }) => {
   const url = "https://20e2-66-212-242-25.ngrok.io";
   //this hook is used to get all data from mongoDB database
   useEffect(() => {
-    fetch(url + "/adds", {
-      mode: 'no-cors',
-    })
+    fetch(url + "/adds")
       .then((res) => res.json())
       .then((data) => addAllAddsFn(data));
   }, [state.adds]);

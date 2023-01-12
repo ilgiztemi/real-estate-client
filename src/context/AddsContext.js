@@ -14,7 +14,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "add-all-adds": {
-      return { ...state, adds: action.data, update:!state.update};
+      return { ...state, adds: action.data};
     }
     case "page": {
       return { ...state, page: action.index };

@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://real-estate-server-six.vercel.app",
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.10.0",

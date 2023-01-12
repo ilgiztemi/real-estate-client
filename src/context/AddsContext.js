@@ -40,9 +40,10 @@ const reducer = (state, action) => {
 export const AddsContext = createContext();
 export const AddsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const url = "https://real-estate-server-six.vercel.app";
   //this hook is used to get all data from mongoDB database
   useEffect(() => {
-    fetch("/adds")
+    fetch(url + "/adds")
       .then((res) => res.json())
       .then((data) => { 
         console.log("here test", data);
@@ -56,7 +57,7 @@ export const AddsProvider = ({ children }) => {
   };
   //this function deletes an add based on id
   const deleteAnAdd = (_id) => {
-    fetch("/delete", {
+    fetch(url + "/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export const AddsProvider = ({ children }) => {
       data,
     });
     if (state.editAdd) {
-      fetch("/update", {
+      fetch(url + "/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +99,7 @@ export const AddsProvider = ({ children }) => {
   //this function helps to create a new add and it adds it to database up on  submitting it
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    fetch("/add/add", {
+    fetch(url + "/add/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -40,10 +40,9 @@ const reducer = (state, action) => {
 export const AddsContext = createContext();
 export const AddsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const url = "https://20e2-66-212-242-25.ngrok.io";
   //this hook is used to get all data from mongoDB database
   useEffect(() => {
-    fetch(url + "/adds")
+    fetch("/adds")
       .then((res) => res.json())
       .then((data) => addAllAddsFn(data));
   }, [state.adds]);
@@ -55,9 +54,8 @@ export const AddsProvider = ({ children }) => {
   };
   //this function deletes an add based on id
   const deleteAnAdd = (_id) => {
-    fetch( url + "/delete", {
+    fetch("/delete", {
       method: "DELETE",
-      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
@@ -71,9 +69,8 @@ export const AddsProvider = ({ children }) => {
       data,
     });
     if (state.editAdd) {
-      fetch(url + "/update", {
+      fetch("/update", {
         method: "PUT",
-        mode: 'no-cors',
         headers: {
           "Content-Type": "application/json",
         },
@@ -99,9 +96,8 @@ export const AddsProvider = ({ children }) => {
   //this function helps to create a new add and it adds it to database up on  submitting it
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    fetch(url + "/add/add", {
+    fetch("/add/add", {
       method: "POST",
-      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },

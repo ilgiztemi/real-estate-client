@@ -9,6 +9,7 @@ const initialState = {
   newAdd: {},
   edit: false,
   editAdd: null,
+  update:false
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -22,7 +23,7 @@ const reducer = (state, action) => {
       return { ...state, tabs: action.data };
     }
     case "edit-add": {
-      return { ...state, editAdd: action.data, edit: !state.edit };
+      return { ...state, editAdd: action.data, edit: !state.edit, update:!state.update };
     }
     case "handle-edit-input": {
       return {
@@ -48,7 +49,7 @@ export const AddsProvider = ({ children }) => {
       .then((data) => { 
         console.log("here test", data);
         addAllAddsFn(data)});
-  }, [state.adds]);
+  }, [state.update]);
   const addAllAddsFn = (data) => {
     dispatch({
       type: "add-all-adds",

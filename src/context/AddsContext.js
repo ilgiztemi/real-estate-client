@@ -44,7 +44,9 @@ export const AddsProvider = ({ children }) => {
   useEffect(() => {
     fetch("/adds")
       .then((res) => res.json())
-      .then((data) => addAllAddsFn(data));
+      .then((data) => { 
+        console.log("hereeee test", data);
+        addAllAddsFn(data)});
   }, [state.adds]);
   const addAllAddsFn = (data) => {
     dispatch({

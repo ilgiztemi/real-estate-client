@@ -42,7 +42,7 @@ export const AddsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   //this hook is used to get all data from mongoDB database
   useEffect(() => {
-    fetch("/api/adds")
+    fetch("/adds")
       .then((res) => res.json())
       .then((data) => addAllAddsFn(data));
   }, [state.adds]);
@@ -54,7 +54,7 @@ export const AddsProvider = ({ children }) => {
   };
   //this function deletes an add based on id
   const deleteAnAdd = (_id) => {
-    fetch("/api/delete", {
+    fetch("/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export const AddsProvider = ({ children }) => {
       data,
     });
     if (state.editAdd) {
-      fetch("/api/update", {
+      fetch("/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export const AddsProvider = ({ children }) => {
   //this function helps to create a new add and it adds it to database up on  submitting it
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    fetch("/api/add/add", {
+    fetch("/add/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
